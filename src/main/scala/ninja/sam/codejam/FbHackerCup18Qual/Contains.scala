@@ -35,5 +35,3 @@ object Contains extends Solver(inputFile = "ethan_searches_for_a_string_final.in
 
   override def format(output: Output) = output.getOrElse("Impossible")
 }
-
-case class Attraction(var visit: Int, popularity: Int, name: String)
