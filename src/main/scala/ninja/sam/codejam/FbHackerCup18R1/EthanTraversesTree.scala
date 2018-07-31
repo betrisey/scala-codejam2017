@@ -1,12 +1,13 @@
 package ninja.sam.codejam.FbHackerCup18R1
 
-import ninja.sam.codejam.Solver
+import better.files._
 
-object EthanTraversesTree extends Solver(inputFile = "ethan_traverses_a_tree_final.in") {
-  override type Input = (Int, Int, Node)
-  override type Output = Option[Array[Int]]
+object EthanTraversesTree extends App {
+  val inputFile = "ethan_traverses_a_tree_final.in"
+  type Input = (Int, Int, Node)
+  type Output = Option[Array[Int]]
 
-  override def read = {
+  def read = {
     var n = in.next[Int]
     val k = in.next[Int]
 
@@ -24,7 +25,7 @@ object EthanTraversesTree extends Solver(inputFile = "ethan_traverses_a_tree_fin
     (n, k, buildTree(1))
   }
 
-  override def apply(input: Input): Output = {
+  def apply(input: Input): Output = {
     val n = input._1
     val k = input._2
     val tree = input._3
@@ -71,7 +72,20 @@ object EthanTraversesTree extends Solver(inputFile = "ethan_traverses_a_tree_fin
     return None
   }
 
-  override def format(output: Output) = output.map(_.mkString(" ")).getOrElse("Impossible")
-}
+  case class Node(left: Option[Node], right: Option[Node], label: Int)
 
-case class Node(left: Option[Node], right: Option[Node], label: Int)
+  def format(output: Output) = output.map(_.mkString(" ")).getOrElse("Impossible")
+
+  /* Template */
+  val in = Scanner(getClass.getResourceAsStream(inputFile))(Scanner.Config.default)
+  val out = File(inputFile.replace(".in", ".out")).newOutputStream.printer()
+
+  println(s"Solving: $inputFile")
+  for (i <- 1 to in.next[Int]) {
+    val output = s"Case #$i: ${format(apply(read))}"
+    println(output)
+    out.println(output)
+  }
+  in.close()
+  out.close()
+}
