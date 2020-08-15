@@ -2,6 +2,7 @@ name := "ScalaJam"
 description := "Scala template for Google Code Jam"
 scalaVersion := "2.11.7"
 libraryDependencies ++= Seq(
+  "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2", 
   "com.softwaremill.scalamacrodebug"  %% "macros"       %   "0.4",
   //"org.scalacheck"                    %% "scalacheck"   %   "1.12.4"  % Test,
   "com.github.pathikrit"              %% "better-files" %   "2.15.0",

@@ -11,7 +11,7 @@ abstract class Solver(inputFile: String) extends App {
   import better.files._
 
   val in = Scanner(getClass.getResourceAsStream(inputFile))(Scanner.Config.default)
-  val out = File(inputFile.replace(".in", ".out")).newOutputStream.printer()
+  val out = File(inputFile.replace("_input.txt", "_output.txt")).newOutputStream.printer()
 
   println(s"Solving: $inputFile")
   for (i <- 1 to in.next[Int]) {
